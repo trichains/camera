@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Viewer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <video id="webcam" autoplay playsinline></video>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const video = document.getElementById('webcam');
+
+            // Verifica se o navegador suporta a API de mídia
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then((stream) => {
+                        // Define o stream da câmera como origem do elemento de vídeo
+                        video.srcObject = stream;
+                    })
+                    .catch((error) => {
+                        console.error('Erro ao acessar a câmera:', error);
+                    });
+            } else {
+                console.error('O navegador não suporta a API de mídia');
+            }
+        });
+    </script>
+</body>
+</html>
