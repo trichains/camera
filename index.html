@@ -11,19 +11,28 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background: linear-gradient(to bottom, #222, #040404);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         video {
             width: 100%;
-            max-width: 600px;
-            border: 2px solid #333;
-            border-radius: 8px;
+            height: auto;
             transform: scaleX(-1); /* Inverte horizontalmente */
         }
     </style>
 </head>
 <body>
-    <video id="webcam" autoplay playsinline></video>
+    <div id="container">
+        <video id="webcam" autoplay playsinline></video>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
